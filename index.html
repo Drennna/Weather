@@ -23,8 +23,8 @@
   </head>
 <body
 style="background-color:rgb(164, 207, 22);">
-<div id="miasto" class="shared"> Miasto</div>
-<div id="temperatura" class="shared">Temperatura</div>
+<div id="city" class="shared"> Miasto</div>
+<div id="temperature" class="shared">Temperatura</div>
 <div id="obrazek" class="shared">tubędzieobrazek</div>
 <div for="city-name">Nazwa miejscowości:</div>
 
@@ -36,17 +36,29 @@ style="background-color:rgb(164, 207, 22);">
   <script>
     const polishCities = [
       {
-        name: "Katowice"
+        name: "Katowice",
+        temperature: 30
       },
       {
-        name: "Kraków"
+        name: "Kraków",
+        temperature: -5
       }
     ]
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
+const city = document.getElementById("city");
+const temperature = document.getElementById("temperature");
 searchButton.addEventListener("click",function(){
     const found = polishCities.find(element => element.name.toLocaleLowerCase() == searchInput.value.toLocaleLowerCase());
-    console.log(found)
+    console.log(found);
+    if (found) {
+      city.innerHTML = found.name;
+      temperature.innerHTML = found.temperature;
+    }
+    else {
+      city.innerHTML = "Nie znaleziono miasta"
+      temperature.innerHTML = "-"
+    }
 });
   </script>
 </html>
