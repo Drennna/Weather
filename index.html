@@ -14,6 +14,9 @@
         right: 200px;
         background-color: black;
       }
+      #temperature-picture {
+display: none;
+      }
 
       .shared {
         width: 100px;
@@ -26,6 +29,7 @@ style="background-color:rgb(164, 207, 22);">
 <div id="city" class="shared"> Miasto</div>
 <div id="temperature" class="shared">Temperatura</div>
 <div id="obrazek" class="shared">tubędzieobrazek</div>
+<img id="temperature-picture" src="sun.png" />
 <div for="city-name">Nazwa miejscowości:</div>
 
 <input id="search-input" name="podajmiasto" />
@@ -48,16 +52,25 @@ const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const city = document.getElementById("city");
 const temperature = document.getElementById("temperature");
+const temperaturePicture = document.getElementById("temperature-picture");
 searchButton.addEventListener("click",function(){
     const found = polishCities.find(element => element.name.toLocaleLowerCase() == searchInput.value.toLocaleLowerCase());
     console.log(found);
     if (found) {
       city.innerHTML = found.name;
       temperature.innerHTML = found.temperature;
+      if (found.temperature > 0){
+        temperaturePicture.src = "sun.png"
+      } else {
+        temperaturePicture.src = "snow.png"
+      }
+      
+      temperaturePicture.style.display = "block"
     }
     else {
       city.innerHTML = "Nie znaleziono miasta"
       temperature.innerHTML = "-"
+      temperaturePicture.style.display = "none"
     }
 });
   </script>
