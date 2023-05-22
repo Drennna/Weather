@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>pogoda</title>
+    <style>
+      #miasto {
+        background-color: rgba(211, 15, 67, 0.155);
+      }
+
+      #temperatura {
+        right: 100px;
+        background-color: rgba(206, 203, 219, 0.728);
+      }
+      #obrazek {
+        right: 200px;
+        background-color: black;
+      }
+
+      .shared {
+        width: 100px;
+        height:50px;
+      }
+    </style>
+  </head>
+<body
+style="background-color:rgb(164, 207, 22);">
+<div id="miasto" class="shared"> Miasto</div>
+<div id="temperatura" class="shared">Temperatura</div>
+<div id="obrazek" class="shared">tubędzieobrazek</div>
+<div for="city-name">Nazwa miejscowości:</div>
+
+<input id="search-input" name="podajmiasto" />
+<button id="search-button">szukaj!</button>
+  </body>
+
+
+  <script>
+const searchButton = document.getElementById("search-button");
+const searchInput = document.getElementById("search-input");
+searchButton.addEventListener("click",function(){
+    console.log(searchInput.value)
+});
+  </script>
+</html>
