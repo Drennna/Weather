@@ -34,10 +34,19 @@ style="background-color:rgb(164, 207, 22);">
 
 
   <script>
+    const polishCities = [
+      {
+        name: "Katowice"
+      },
+      {
+        name: "Kraków"
+      }
+    ]
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 searchButton.addEventListener("click",function(){
-    console.log(searchInput.value)
+    const found = polishCities.find(element => element.name.toLocaleLowerCase() == searchInput.value.toLocaleLowerCase());
+    console.log(found)
 });
   </script>
 </html>
