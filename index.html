@@ -34,14 +34,28 @@ style="background-color:rgb(164, 207, 22);">
 
 <input id="search-input" name="podajmiasto" />
 <button id="search-button">szukaj!</button>
+<button id="celsius-button">Celcjusz</button>
+<button id="fahrenheit-button">Fahrenheit</button>
   </body>
 
 
   <script>
     class City {
-	constructor(name, temperature){
+	constructor(name, celsiusTemperature){
 	this.name = name;
-	this.temperature = temperature
+	this.celsiusTemperature = celsiusTemperature
+ }
+ getTemperatureInCelsius(){
+  return this.celsiusTemperature
+ }
+ getTemperatureInFahrenheit() {
+  return ((this.getTemperatureInCelsius() * 9) / 5 + 32).toFixed(1);
+ }
+ getTemperatureInCelsiusFormatted(){
+  return this.getTemperatureInCelsius() + " C "
+ }
+ getTemperatureInFahrenheitFormatted(){
+  return this.getTemperatureInFahrenheit() + " F "
  }
 }
     const polishCities = [
@@ -50,17 +64,34 @@ style="background-color:rgb(164, 207, 22);">
      new City ("Kraków",30),
     ]
 const searchButton = document.getElementById("search-button");
+const celsiusButton = document.getElementById("celsius-button");
+const fahrenheitButton = document.getElementById("fahrenheit-button");
 const searchInput = document.getElementById("search-input");
 const city = document.getElementById("city");
 const temperature = document.getElementById("temperature");
 const temperaturePicture = document.getElementById("temperature-picture");
-searchButton.addEventListener("click",function(){
+let temperatureFormat = "celsius";
+searchButton.addEventListener("click",main);
+celsiusButton.addEventListener("click",function(){
+  temperatureFormat = "celsius";
+  main();
+});
+fahrenheitButton.addEventListener("click",function(){
+  temperatureFormat = "fahrenheit";
+  main();
+})
+function main (){
     const found = polishCities.find(element => element.name.toLocaleLowerCase() == searchInput.value.toLocaleLowerCase());
     console.log(found);
     if (found) {
       city.innerHTML = found.name;
-      temperature.innerHTML = found.temperature;
-      if (found.temperature > 0){
+      if (temperatureFormat == "celsius"){
+        temperature.innerHTML = found.getTemperatureInCelsiusFormatted()
+      } else {
+        temperature.innerHTML = found.getTemperatureInFahrenheitFormatted()
+      }
+
+      if (found.getTemperatureInCelsius() > 0){
         temperaturePicture.src = "sun.png"
       } else {
         temperaturePicture.src = "snow.png"
@@ -73,6 +104,6 @@ searchButton.addEventListener("click",function(){
       temperature.innerHTML = "-"
       temperaturePicture.style.display = "none"
     }
-});
+}
   </script>
 </html>
