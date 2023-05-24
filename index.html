@@ -2,38 +2,50 @@
   <head>
     <title>pogoda</title>
     <style>
-      #miasto {
-        background-color: rgba(211, 15, 67, 0.155);
+      #city {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
       }
 
-      #temperatura {
-        right: 100px;
-        background-color: rgba(206, 203, 219, 0.728);
-      }
-      #obrazek {
+      #temperature {
         right: 200px;
-        background-color: black;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
       }
+      
       #temperature-picture {
 display: none;
       }
-
+      #search-button{
+        right: 500px;
+        width: 5%;
+        margin: 0 auto;
+      }
+      #search-input{
+        width: 15%;
+      }
+      #temperature-picture{
+        width: 13%;
+      }
+      
       .shared {
-        width: 100px;
-        height:50px;
+        width: 400px;
+        height:100px;
       }
     </style>
   </head>
 <body
-style="background-color:rgb(164, 207, 22);">
+style="background-color:rgb(78, 125, 220);">
+<div id="container"></div>
 <div id="city" class="shared"> Miasto</div>
 <div id="temperature" class="shared">Temperatura</div>
-<div id="obrazek" class="shared">tubędzieobrazek</div>
 <img id="temperature-picture" src="sun.png" />
 <div for="city-name">Nazwa miejscowości:</div>
 
 <input id="search-input" name="podajmiasto" />
-<button id="search-button">szukaj!</button>
+<button id="search-button">Szukaj!</button>
 <button id="celsius-button">Celcjusz</button>
 <button id="fahrenheit-button">Fahrenheit</button>
   </body>
@@ -62,6 +74,10 @@ style="background-color:rgb(164, 207, 22);">
      new City ("Czeladź",10),
      new City ("Katowice",-15),
      new City ("Kraków",30),
+     new City ("Dąbrowa Górnicza",-10),
+     new City ("Mysłowice",-5),
+     new City ("Wrocław",18),
+     new City ("Zakopane",-25),
     ]
 const searchButton = document.getElementById("search-button");
 const celsiusButton = document.getElementById("celsius-button");
